@@ -64,14 +64,13 @@ class A(Chare):
                 partner.send(self.value)
                 
                 # wait for response from right
-                for ch in charm.iwait([partner]):
-                    self.value = ch.recv() # receive from the left
+                self.value = partner.recv() # receive from the left
             
             # RECEIVER
             if (self.idx % 2 != step % 2 and self.left):
                 partner = self.left
-                for ch in charm.iwait([partner]):
-                    other = ch.recv() # receive from the left
+                
+                other = partner.recv() # receive from the left
                     
                 # send response to left
                 if (other <= self.value):
