@@ -1,9 +1,8 @@
-# Odd-Even Sort Tutorial
+# Odd-Even Sort
 
 ## Overview
 This exercise guides you through implementing a parallel odd-even sort algorithm in Charm4py using channels.
 
-## How Odd-Even Sort Works
 Odd-even sort is a parallel sorting algorithm that repeatedly compares and swaps adjacent elements in alternating phases:
 - **Odd phase**: Compare and swap elements at indices (1,2), (3,4), (5,6), etc.
 - **Even phase**: Compare and swap elements at indices (0,1), (2,3), (4,5), etc.
