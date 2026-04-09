@@ -1,5 +1,5 @@
 
-**2D particle simulation with dynamic load balancing**
+**Exercise 4: 2D particle simulation with dynamic load balancing**
 
 This is a simple simulation of particles moving randomly in a 2D space. The
 space is given by a box, and particles moving out of the box appear on the
@@ -14,6 +14,12 @@ work). Note that even with these conditions, whether there is load
 imbalance and whether anything can be done about it depends on several other
 factors (see below for a discussion).
 
+***How to complete the example***
+Before running the example, you need to complete the code, specifically the
+main loop in the run() method. The TODO comment explains what needs to happen 
+during the loop.
+
+***Running the code***
 An scenario which should show significant load imbalance and where dynamic
 load balancing improves performance is this:
 
