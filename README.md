@@ -10,9 +10,15 @@ This tutorial aims to teach effective parallel programming using Charm4Py. Atten
 ### Presenters
 Laxmikant Kale, Ritvik Rao, Maya Taylor, and Aditya Bhosale (University of Illinois Urbana-Champaign)
 
-### Tutorial Schedule
+### Tutorial Offerings
 - Session 1: Monday, May 25 @ 8:30am-12:00pm
 - Session 2: Tuesday, May 26 @ 8:30am-12:00pm
 
-Updated full schedule [here](https://ssl.linklings.net/conferences/ipdps/ipdps2026_program/views/at_a_glance.html).
+Updated conference schedule [here](https://ssl.linklings.net/conferences/ipdps/ipdps2026_program/views/at_a_glance.html).
+
+### Tutorial Schedule
+
+| Module | Description | Hands-on
+| -------- | -------- | ---------- |
+| Introduction | Overview of the Charm4Py programming model with basic examples. Attendees will install the Charm4Py Docker container and implement a simple 'hello world' Charm4Py program.| |
 
