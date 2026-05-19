@@ -21,7 +21,7 @@ Updated conference schedule [here](https://ssl.linklings.net/conferences/ipdps/i
 | Module | Description | Exercises
 | -------- | -------- | ----- |
 | Introduction | Overview of the Charm4Py programming model with basic examples. Attendees will install the Charm4Py Docker container. | [Ex1](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex1-basic) | 
-| Chare Arrays | Learn about Chare arrays and associated communication primatives, including `broadcasts`, `reductions`, and `channels.`| [Ex2](), [Ex3](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex3-oddeven)| 
+| Chare Arrays | Learn about Chare arrays and associated communication primatives, including `broadcasts`, `reductions`, and `channels.`| [Ex2](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex2-chare-arrays), [Ex3](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex3-oddeven)| 
 | Advanced Features | Discussion of load balancing and GPU integration in Charm4Py. | |
 | Profiling and Visualization | Learn how to profile Charm4Py programs with `projections` and how to use the `liveViz` visualization tool. | [Ex4](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex4-particle), [Ex5]()|
 

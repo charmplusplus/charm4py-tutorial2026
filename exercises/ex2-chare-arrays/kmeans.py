@@ -1,0 +1,95 @@
+from charm4py import charm, Chare, Array, Reducer, Future, coro
+import random
+
+POINTS_PER_CHARE = 1000
+THRESHOLD = 0.001
+
+
+class Points(Chare):
+
+    def __init__(self, K):
+        self.K = K
+        # each chare seeds its own RNG so every chare gets a different shard
+        # of random 2D points in [0, 1) x [0, 1)
+        rng = random.Random(self.thisIndex[0])
+        self.points = [(rng.random(), rng.random())
+                       for _ in range(POINTS_PER_CHARE)]
+
+    def assign(self, centroids, counts_future, coords_future):
+        # centroids: length-K list of (x, y) tuples broadcast by main.
+        K = self.K
+        counts = [0] * K
+        # coords stores the SUM of (x, y) of all points assigned to each cluster,
+        # interleaved as: x_0, y_0, x_1, y_1, ..., x_{K-1}, y_{K-1}.
+        coords = [0.0] * (2 * K)
+
+        # TODO: for each (x, y) in self.points, find the index `best` of the
+        # closest centroid by squared Euclidean distance, then:
+        #   counts[best] += 1
+        #   coords[2*best]     += x
+        #   coords[2*best + 1] += y
+
+        # TODO: contribute to TWO sum reductions, one per output:
+        #   - counts (length K)  -> counts_future
+        #   - coords (length 2K) -> coords_future
+        # Hint: self.reduce(<target>, <value>, Reducer.sum)
+        pass
+
+
+@coro
+def main(args):
+    num_chares = 4
+    K = 4
+    if len(args) > 1:
+        num_chares = int(args[1])
+    if len(args) > 2:
+        K = int(args[2])
+
+    M = num_chares * POINTS_PER_CHARE
+    print(f"K-Means: {M} points across {num_chares} chares, {K} clusters")
+    print(f"Convergence threshold: {THRESHOLD}")
+
+    points = Array(Points, num_chares, args=[K])
+
+    # initial centroid guess: K random points in [0, 1)^2
+    rng = random.Random(42)
+    centroids = [(rng.random(), rng.random()) for _ in range(K)]
+
+    iteration = 0
+    while True:
+        iteration += 1
+
+        # TODO: broadcast `centroids` to every Points chare's assign method,
+        # passing two Futures as reduction targets. Then collect the reduced
+        # `counts` (length K) and `coords` (length 2K) by blocking on the
+        # futures with `.get()`.
+        counts = None
+        coords = None
+
+        # compute new centroids; for empty clusters, keep the old centroid
+        new_centroids = []
+        for i in range(K):
+            if counts[i] == 0:
+                new_centroids.append(centroids[i])
+            else:
+                new_centroids.append((coords[2 * i] / counts[i],
+                                      coords[2 * i + 1] / counts[i]))
+
+        # convergence: no centroid coordinate moves by more than THRESHOLD
+        max_change = max(
+            max(abs(new_centroids[i][0] - centroids[i][0]),
+                abs(new_centroids[i][1] - centroids[i][1]))
+            for i in range(K)
+        )
+        centroids = new_centroids
+        if max_change < THRESHOLD:
+            break
+
+    print(f"Converged in {iteration} iterations")
+    print("Final centroids:")
+    for i, c in enumerate(centroids):
+        print(f"  cluster {i}: ({c[0]:.4f}, {c[1]:.4f})  count = {counts[i]}")
+    exit()
+
+
+charm.start(main)
