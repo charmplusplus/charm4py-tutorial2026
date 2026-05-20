@@ -1,0 +1,23 @@
+{
+  "name": "Charm4py Tutorial",
+  "image": "adityapb/charm4py-tutorial:latest",
+  "remoteUser": "tutorial",
+  "workspaceFolder": "/workspaces/charm4py-tutorial2026",
+  "runArgs": ["--shm-size=1g"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.cwd": "/workspaces/charm4py-tutorial2026"
+      }
+    }
+  },
+  "postAttachCommand": {
+    "welcome": "echo '' && echo 'Charm4py tutorial container ready.' && echo '  exercises:  ./exercises   (live-mounted from your machine)' && echo '  slides:     ./slides' && echo '  examples:   ~/examples    (charm4py upstream examples)' && echo '' && echo 'Two interpreters available:' && echo '  python3       - default charm4py' && echo '  python3-prj   - charm4py built with tracing; runs emit Projections logs in the cwd' && echo '' && echo 'Try:  mpirun -n 4 python3 ~/examples/hello/array_hello.py' && echo ''"
+  }
+}
