@@ -67,3 +67,8 @@ The `-v` bind-mount means edits inside the container (and any trace files you ge
 The container includes `python3-prj`, a second charm4py build with Projections tracing enabled. Use it in place of `python3` to record traces &mdash; no extra flags needed.
 
 Run from inside the tutorial folder so trace files land on your laptop (the folder is shared between the container and your host). Then install the [Projections viewer](https://charm.cs.illinois.edu/software) on your laptop (needs Java 8+) and open the `.sts` file to explore.
+
+### Other Resources
+- [Charm4Py documentation](https://charm4py.readthedocs.io/en/latest/)
+- [Charm4Py repository](https://github.com/charmplusplus/charm4py)
+- [Parallel Programming Laboratory homepage](http://charm.cs.uiuc.edu/)
