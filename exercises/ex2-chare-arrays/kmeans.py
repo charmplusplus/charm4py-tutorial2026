@@ -19,15 +19,18 @@ class Points(Chare):
         # centroids: length-K list of (x, y) tuples broadcast by main.
         K = self.K
         counts = [0] * K
-        # coords stores the SUM of (x, y) of all points assigned to each cluster,
-        # interleaved as: x_0, y_0, x_1, y_1, ..., x_{K-1}, y_{K-1}.
-        coords = [0.0] * (2 * K)
-
-        # TODO: for each (x, y) in self.points, find the index `best` of the
-        # closest centroid by squared Euclidean distance, then:
-        #   counts[best] += 1
-        #   coords[2*best]     += x
-        #   coords[2*best + 1] += y
+        coords = [0.0] * (2 * K)  # interleaved: x0, y0, x1, y1, ..., x_{K-1}, y_{K-1}
+        for (x, y) in self.points:
+            best = 0
+            best_d = (x - centroids[0][0]) ** 2 + (y - centroids[0][1]) ** 2
+            for i in range(1, K):
+                d = (x - centroids[i][0]) ** 2 + (y - centroids[i][1]) ** 2
+                if d < best_d:
+                    best_d = d
+                    best = i
+            counts[best] += 1
+            coords[2 * best] += x
+            coords[2 * best + 1] += y
 
         # TODO: contribute to TWO sum reductions, one per output:
         #   - counts (length K)  -> counts_future
