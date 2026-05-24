@@ -7,6 +7,7 @@ Charm4Py is an implementation of the Charm++ programming model that makes these 
 
 This tutorial aims to teach effective parallel programming using Charm4Py. Attendees will start with basic knowledge of Python, and by the end of the tutorial are expected to be able to code sophisticated parallel applications that can run on clusters, supercomputers, and cloud-based resources scalably and adaptively.
 
+## IPDPS 2026 Details
 ### Presenters
 Laxmikant Kale, Ritvik Rao, Maya Taylor, and Aditya Bhosale (University of Illinois Urbana-Champaign)
 
@@ -15,7 +16,16 @@ Laxmikant Kale, Ritvik Rao, Maya Taylor, and Aditya Bhosale (University of Illin
 - Session 2: Tuesday, May 26 @ 8:30am-12:00pm
 
 Updated conference schedule [here](https://ssl.linklings.net/conferences/ipdps/ipdps2026_program/views/at_a_glance.html).
+### Tutorial Schedule
 
+| Module | Description | Exercises
+| -------- | -------- | ----- |
+| Introduction | Overview of the Charm4Py programming model with basic examples. Attendees will install the Charm4Py Docker container. | [Ex1](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex1-basic) | 
+| Chare Arrays | Learn about Chare arrays and associated communication primatives, including `broadcasts`, `reductions`, and `channels.`| [Ex2](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex2-chare-arrays), [Ex3](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex3-oddeven)| 
+| Advanced Features | Discussion of load balancing and GPU integration in Charm4Py. | |
+| Profiling and Visualization | Learn how to profile Charm4Py programs with `projections` and how to use the `liveViz` visualization tool. | [Ex4](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex4-particle), [Ex5]()|
+
+## Local Setup
 ### Running the container in VS Code (recommended)
 
 You'll need [Docker Desktop](https://www.docker.com/products/docker-desktop/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) for VS Code.
@@ -57,13 +67,3 @@ The `-v` bind-mount means edits inside the container (and any trace files you ge
 The container includes `python3-prj`, a second charm4py build with Projections tracing enabled. Use it in place of `python3` to record traces &mdash; no extra flags needed.
 
 Run from inside the tutorial folder so trace files land on your laptop (the folder is shared between the container and your host). Then install the [Projections viewer](https://charm.cs.illinois.edu/software) on your laptop (needs Java 8+) and open the `.sts` file to explore.
-
-### Tutorial Schedule
-
-| Module | Description | Exercises
-| -------- | -------- | ----- |
-| Introduction | Overview of the Charm4Py programming model with basic examples. Attendees will install the Charm4Py Docker container. | [Ex1](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex1-basic) | 
-| Chare Arrays | Learn about Chare arrays and associated communication primatives, including `broadcasts`, `reductions`, and `channels.`| [Ex2](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex2-chare-arrays), [Ex3](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex3-oddeven)| 
-| Advanced Features | Discussion of load balancing and GPU integration in Charm4Py. | |
-| Profiling and Visualization | Learn how to profile Charm4Py programs with `projections` and how to use the `liveViz` visualization tool. | [Ex4](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex4-particle), [Ex5]()|
-
