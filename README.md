@@ -25,6 +25,10 @@ Updated conference schedule [here](https://ssl.linklings.net/conferences/ipdps/i
 | Advanced Features | Discussion of load balancing and GPU integration in Charm4Py. | |
 | Profiling and Visualization | Learn how to profile Charm4Py programs with `projections` and how to use the `liveViz` visualization tool. | [Ex4](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex4-particle), [Ex5]()|
 
+## Feedback
+
+https://forms.gle/aRwpbE33Mwi3cLM58
+
 ## Local Setup
 ### Running the container in VS Code (recommended)
 
