@@ -25,6 +25,10 @@ Updated conference schedule [here](https://ssl.linklings.net/conferences/ipdps/i
 | Advanced Features | Discussion of load balancing and GPU integration in Charm4Py. | |
 | Profiling and Visualization | Learn how to profile Charm4Py programs with `projections` and how to use the `liveViz` visualization tool. | [Ex4](https://github.com/charmplusplus/charm4py-tutorial2026/tree/main/exercises/ex4-particle), [Ex5]()|
 
+## Feedback
+
+https://forms.gle/aRwpbE33Mwi3cLM58
+
 ## Local Setup
 ### Running the container in VS Code (recommended)
 
@@ -55,12 +59,16 @@ If you'd rather skip VS Code, you only need [Docker](https://www.docker.com/prod
 docker pull adityapb/charm4py-tutorial:latest
 cd path/to/charm4py-tutorial2026
 docker run --rm -it \
+    --user "$(id -u):$(id -g)" \
+    -e HOME=/tmp \
     -v "$(pwd):/workspaces/charm4py-tutorial2026" \
     -w /workspaces/charm4py-tutorial2026 \
     adityapb/charm4py-tutorial:latest
 ```
 
-The `-v` bind-mount means edits inside the container (and any trace files you generate) show up on your laptop in the same folder.
+The `-v` bind-mount means edits inside the container (and any trace files you generate) show up on your laptop in the same folder. The `--user`/`-e HOME` flags run the container as you, so it can read and write those files (VS Code does this automatically; from the terminal you pass it yourself &mdash; without it you may hit `Permission denied`).
+
+The bundled charm4py examples live at `/home/tutorial/examples` (e.g. `mpirun -n 4 python3 /home/tutorial/examples/hello/array_hello.py`).
 
 ### Running with PyPi package
 
