@@ -62,6 +62,11 @@ docker run --rm -it \
 
 The `-v` bind-mount means edits inside the container (and any trace files you generate) show up on your laptop in the same folder.
 
+### Running with PyPi package
+
+We have published v1.1 of Charm4Py to PyPi. If you have a virtual environment with a Python version between
+3.8 and 3.13, you can download Charm4Py with `pip install charm4py`.
+
 ### Profiling with Projections
 
 The container includes `python3-prj`, a second charm4py build with Projections tracing enabled. Use it in place of `python3` to record traces &mdash; no extra flags needed.
